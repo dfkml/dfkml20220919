@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>通用管理界面</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #141e30, #243b55);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .sidebar {
+            background-color: #192d44;
+            width: 200px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 5px;
+        }
+        .sidebar ul li a {
+            display: block;
+            padding: 10px 20px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .sidebar ul li a:hover {
+            background-color: #4c9de0;
+        }
+        .content {
+            margin-left: 200px;
+            padding: 20px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <ul>
+            {% for label in permissions %}
+           
+                <li><a href="{{permission[label]}}">{{ label }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="content">
+        <h1>{{ page_content }}</h1>
+    </div>
+</body>
+</html>

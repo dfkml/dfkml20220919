@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>登录</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #141e30, #243b55);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .login-form {
+            background-color: #fff;
+            width: 300px;
+            margin: 200px auto;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 3px;
+        }
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #6ac6ff;
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .login-form button:hover {
+            background-color: #4c9de0;
+        }
+        .login-form .message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        <h1>登录</h1>
+        {% if message %}
+        <p class="message">{{ message }}</p>
+        {% endif %}
+        <form method="POST">
+            <input type="text" placeholder="用户名" name="username" required><br>
+            <input type="password" placeholder="密码" name="password" required><br>
+            <button type="submit">登录</button>
+        </form>
+    </div>
+</body>
+</html>
