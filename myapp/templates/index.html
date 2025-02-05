@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页</title>
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-icons.css' %}">
+   
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">主页</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="productLink">添加数据</a>
+                    </li>
+                    <li class="nav-item">                        
+                        <a class="nav-link" href="#" id="original">初始数据</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">关于我们</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="mb-3" id="clipboardContainer">
+            
+            <button id="clipboardButton" class="btn btn-primary mb-2"><i class="bi bi-clipboard"></i> 获取剪贴板</button>
+            <button id="palaceDataFetchButton" class="btn btn-primary mb-2"><i class="bi bi-database"></i> 宫殿</button>
+            <button id="memoryPegDataFetchButton" class="btn btn-primary mb-2"><i class="bi bi-database"></i> 记忆桩</button>
+
+            <button id="clearClipboardButton" class="btn btn-secondary mb-2"><i class="bi bi-x-circle"></i> 清空文本</button>
+            <button id="hiddenPanelButton" class="btn btn-secondary mb-2"><i class="bi bi-x-circle"></i> 隐藏面板</button>
+            <textarea id="clip" class="form-control" rows="4"></textarea>
+            
+            
+            <div id="clipboardFormatStatus" class="error-message"></div>
+        </div>
+       
+        
+            <div>
+                <div class="d-flex justify-content-between align-items-center mb-3" >
+                    
+                    <button id="alterPalaceUrl" class="btn btn-primary me-3"><i class="bi bi-database"></i> 链接</button>
+                    <button id="clearDatabaseButton" class="btn btn-secondary"><i class="bi bi-x-circle"></i> 清空</button>
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="搜索...">
+                    </div>
+                    
+                </div>
+                
+                <div id="palaceDataFetchError" class="error-message"></div>
+                <div class="fixed-height-list" id="palaceDataList">
+                    <!-- 宫殿数据列表将在这里动态添加 -->
+                </div>
+            </div>
+         
+
+        <!-- 中间部分横跨左右两列 -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <button id="saveDraw" class="btn btn-primary me-3">保存绘制</button>
+                    </div>
+                    <div>
+                        <button id="clearDraw" class="btn btn-secondary me-3" >清除绘制</button>
+                    </div>
+                    <div class="flex-grow-1">
+                        <textarea id="originalSentence" class="form-control mb-0" rows="2" ></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" height="auto" position="relative">
+            <div class="col-md-6 left-column">
+                <div class="img-container">
+                    <img id="mainImage" src="{% static 'images/top.png' %}" alt="主图" class="img-fluid">
+                    <div class="canvas-container">
+                        <canvas id="topCanvas" class="canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 right-column">
+                
+                <div class="scrollable-list" id="referenceList">
+                    <!-- 参考列表将在这里动态添加 -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 right-column">
+            <div class="row">
+                <div class="col-md-6">
+                    
+                    <button id="alterMemoryUrl" class="btn btn-primary me-3"><i class="bi bi-database"></i> 更新链接</button>
+                    <div id="memoryPegDataFetchError" class="error-message"></div>
+                    <div class="fixed-height-list" id="memoryPegDataList">
+                        <!-- 记忆桩数据列表将在这里动态添加 -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <button id="huizhiButton" class="btn btn-primary mb-3"><i class="bi bi-database"></i> 绘制数据显示</button>
+                    
+                    <ul id="drawList" class="fixed-height-list">
+                        <!-- 绘制列表将在这里动态添加 -->
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="bottom-nav">
+            <div class="bottom-nav-item">
+                <i class="bi bi-house-door"></i>
+                <span>首页</span>
+            </div>
+            <div class="bottom-nav-item">
+                <i class="bi bi-arrow-left"></i>
+                <span>上一页</span>
+            </div>
+            <div class="bottom-nav-item">
+                <i class="bi bi-arrow-right"></i>
+                <span>下一页</span>
+            </div>
+            <div class="bottom-nav-item">
+                <i class="bi bi-gear"></i>
+                <span>设置</span>
+        </div>
+        <div class="bottom-nav-item">
+            <i class="bi bi-question-circle"></i>
+            <span>帮助</span>
+        </div>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="{% static 'scripts/change.js' %}"></script>
+    <script src="{% static 'scripts/data.js' %}"></script>
+    <script src="{% static 'scripts/canvas.js' %}"></script>
+    <script src="{% static 'scripts/imageHandler.js' %}"></script>
+    <script src="{% static 'scripts/touchScreen.js' %}"></script>
+</body>
+</html>

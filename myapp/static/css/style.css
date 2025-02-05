@@ -1,0 +1,235 @@
+/* myapp/static/css/styles.css */
+body {
+    padding-top: 20px;
+    position: relative;
+}
+.nav-link.active {
+    color: white;
+}
+.nav-link {
+    color: gray;
+}
+.left-column {
+    background-color: #f8f9fa;
+    padding: 10px;
+    height: auto;
+}
+.right-column {
+    background-color: #f8f9fa;
+    padding: 10px;
+    height: auto;
+}
+.img-container {
+    max-width: 100%;
+    height: auto;
+    margin-top: 0px;
+    position: relative;
+}
+.img-container img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    
+    background-size: cover;
+}
+.scrollable-list {
+    overflow-y: auto;
+    max-height: 80%;
+}
+.fixed-height-list {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.list-item {
+    position: relative;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: auto;
+    text-overflow: ellipsis;
+}
+/* 整个滚动条 */
+.list-item::-webkit-scrollbar {
+    width: 1px; /* 滚动条的宽度 */
+    height: 5px; /* 滚动条的高度 */;
+}
+/* 滚动条轨道 */
+.list-item::-webkit-scrollbar-track {
+    background: #f1f1f1; /* 轨道背景颜色 */
+    border-radius: 6px; /* 轨道圆角 */
+}
+/* 滚动条滑块 */
+.list-item::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* 滑块背景渐变 */
+    border-radius: 6px; /* 滑块圆角 */
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1); /* 滑块阴影 */
+}
+/* 滚动条滑块悬停状态 */
+.list-item::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #feb47b, #ff7e5f); /* 滑块悬停时的背景渐变 */
+}
+.reference-list-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.reference-list-item img {
+    width: 200px;
+    height: auto;
+    margin-right: 10px;
+}
+.error-message {
+    color: red;
+    font-size: 0.8em;
+}
+.valid {
+    border-color: green;
+}
+.invalid {
+    border-color: red;
+}
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 12;
+}
+.bottom-nav.show {
+    opacity: 1;
+}
+.bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+.prompt-text {
+    height: 150px;
+    overflow: auto;
+    word-wrap: break-word;
+}
+.canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgb(236, 10, 10);
+    z-index: 2;
+}
+.canvas-container canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.delete-icon {
+    position: absolute;
+    display: none;
+    cursor: pointer;
+    z-index: 10;
+}
+.trash-icon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    z-index: 10;
+}
+.reference-img {
+    position: absolute;
+    background-color: transparent;
+    width: 150px;
+    height: 150px;
+    color: white;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    cursor: default;
+    z-index: 10;
+}
+/* 图片放大效果 */
+.reference-img img {
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+.reference-img img.enlarged {
+    transform: scale(2); /* 放大到原来的2倍 */
+    z-index: 12; /* 确保放大后的图片在最上层 */
+}
+.prompt-tooltip {
+    position: absolute;
+    width: auto;
+    height: 50px;
+    border-radius: 5%;
+    white-space: pre-wrap;
+    text-align: left;
+    line-height: 20px;
+    font-size: 12px;
+    z-index: 10;
+}
+.timestamp-menu {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px;
+    z-index: 1000;
+    pointer-events: auto;
+}
+.timestamp-menu-item {
+    cursor: pointer;
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+#clipboardContainer {
+    display: none; /* 默认隐藏 */
+}
+.delete-icon {
+    position: absolute;
+    display: inline-block;
+    color: #eb0d0d;
+    margin-left: 150px;
+}
+.d-flex {
+    display: flex;
+    align-items: center; /* 垂直居中对齐 */
+}
+.btn {
+    height: 38px; /* 设置按钮的高度 */
+}
+.search-container {
+    display: flex;
+    align-items: center; /* 垂直居中对齐 */
+}
+#searchInput {
+    width: 100%;
+    margin-right: 10px; /* 输入框和按钮之间的间距 */
+    height: 38px; /* 设置输入框的高度 */
+    padding: 6px 12px; /* 调整输入框的内边距 */
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+#searchInput:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
